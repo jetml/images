@@ -19,4 +19,4 @@ pip3 install -r /notebooks/requirements.txt || pip install -r /notebooks/require
 /bin/bash /notebooks/start.sh || echo "no start.sh"
 
 #jupyter notebook "$@"
-jupyter notebook --notebook-dir=/ --ip 0.0.0.0 --no-browser --allow-root
+jupyter notebook --ip 0.0.0.0 --no-browser --allow-root

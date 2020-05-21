@@ -38,7 +38,13 @@ RUN python3 -m ipykernel.kernelspec
 
 #CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter notebook --notebook-dir=/ --ip 0.0.0.0 --no-browser --allow-root"]
 
+RUN mkdir /notebooks
+
+WORKDIR "/notebooks"
+
 COPY run_jupyter.sh /
+
+RUN chmod +x /run_jupyter.sh
 
 RUN dos2unix /run_jupyter.sh
 
