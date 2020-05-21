@@ -27,12 +27,19 @@ RUN python3 -m pip install jupyter matplotlib
 RUN python3 -m pip install jupyter_http_over_ws ipykernel==5.1.1 nbformat==4.4.0
 RUN jupyter serverextension enable --py jupyter_http_over_ws
 
+# Set up our notebook config.
+COPY jupyter_notebook_config.py /root/.jupyter/
+
 RUN apt-get autoremove -y && apt-get remove -y wget
 
 EXPOSE 8888
 
 RUN python3 -m ipykernel.kernelspec
 
-CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter notebook --notebook-dir=/ --ip 0.0.0.0 --no-browser --allow-root"]
+#CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter notebook --notebook-dir=/ --ip 0.0.0.0 --no-browser --allow-root"]
 
+COPY run_jupyter.sh /
 
+RUN dos2unix /run_jupyter.sh
+
+CMD ["/run_jupyter.sh", "--allow-root"]
