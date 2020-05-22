@@ -14,7 +14,7 @@
 # limitations under the License.
 # ==============================================================================
 
-pip3 install -r /notebooks/requirements.txt || pip install -r /notebooks/requirements.txt
+pip3 --no-cache-dir install -r /notebooks/requirements.txt || pip --no-cache-dir install -r /notebooks/requirements.txt
 
 /bin/bash /notebooks/start.sh || echo "no start.sh"
 
