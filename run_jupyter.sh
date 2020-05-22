@@ -14,9 +14,9 @@
 # limitations under the License.
 # ==============================================================================
 
+#jupyter notebook "$@"
+jupyter notebook --ip 0.0.0.0 --no-browser --allow-root &
+
 pip3 --no-cache-dir install -r /notebooks/requirements.txt || pip --no-cache-dir install -r /notebooks/requirements.txt
 
 /bin/bash /notebooks/start.sh || echo "no start.sh"
-
-#jupyter notebook "$@"
-jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
