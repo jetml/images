@@ -5,6 +5,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
         dos2unix \
         git \
+        keychain \
+        nano \
         python3 \
         python3-dev \
         python3-pip \
