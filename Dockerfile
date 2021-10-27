@@ -12,6 +12,7 @@ RUN mkdir /root/.jupyter/custom
 COPY jupyter_notebook_config.py /root/.jupyter/
 
 COPY custom.css /root/.jupyter/custom/
+COPY custom.js /root/.jupyter/custom/
 
 RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/auth/js/main.min.js
 RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/edit/js/main.min.js
