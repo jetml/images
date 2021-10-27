@@ -1,44 +1,28 @@
-FROM ubuntu:18.04
+FROM tensorflow/tensorflow:2.6.0-jupyter
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        build-essential \
-        curl \
-        dos2unix \
-        git \
-        keychain \
-        nano \
-        python3 \
-        python3-dev \
-        python3-pip \
-        unzip \
-        wget \
-        && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN python3 -m pip --no-cache-dir install --upgrade \
-    pip \
-    setuptools
-
-RUN ln -s $(which python3) /usr/local/bin/python
-
-RUN python3 -m pip install --no-cache-dir tensorflow
-
-RUN python3 -m pip install jupyter matplotlib
-# Pin ipykernel and nbformat; see https://github.com/ipython/ipykernel/issues/422
-RUN python3 -m pip install jupyter_http_over_ws ipykernel==5.1.1 nbformat==4.4.0
-RUN jupyter serverextension enable --py jupyter_http_over_ws
+RUN apt-get update && apt-get install -y \
+    dos2unix \
+    keychain \
+    nano
 
 # Set up our notebook config.
+
+RUN mkdir /root/.jupyter/custom
+
 COPY jupyter_notebook_config.py /root/.jupyter/
 
-RUN apt-get autoremove -y && apt-get remove -y wget
+COPY custom.css /root/.jupyter/custom/
 
-EXPOSE 8888
-
-RUN python3 -m ipykernel.kernelspec
-
-#CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter notebook --notebook-dir=/ --ip 0.0.0.0 --no-browser --allow-root"]
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/auth/js/main.min.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/edit/js/main.min.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/notebook/js/main.min.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/terminal/js/main.min.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/tree/js/main.min.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/tree/js/terminallist.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/notebook/js/main.min.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/base/js/namespace.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/notebook/js/menubar.js
+RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/templates/notebook.html
 
 RUN mkdir /notebooks
 

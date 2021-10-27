@@ -20,17 +20,16 @@ c.NotebookApp.ip = '*'
 c.NotebookApp.port = int(os.getenv('PORT', 8888))
 c.NotebookApp.open_browser = False
 c.NotebookApp.notebook_dir = '/notebooks'
+c.NotebookApp.quit_button = False
+c.NotebookApp.allow_origin = '*'
+c.NotebookApp.tornado_settings = {'headers': {'X-Frame-Options': 'ALLOW-FROM http://localhost:8080','Content-Security-Policy': "frame-ancestors 'self' *"}}
+c.NotebookApp.webbrowser_open_new = 0
+c.NotebookApp.terminado_settings = { 'shell_command': ['/bin/bash'] }
+#c.MappingKernelManager.cull_idle_timeout = 60
+#c.NotebookApp.shutdown_no_activity_timeout = 70
 
 # sets a password if PASSWORD is set in the environment
-if 'PASSWORD' in os.environ:
-  password = os.environ['PASSWORD']
-  if password:
-    c.NotebookApp.password = passwd(password)
-  else:
-    c.NotebookApp.password = ''
-    c.NotebookApp.token = ''
-  del os.environ['PASSWORD']  
-elif 'TOKEN' in os.environ:
+if 'TOKEN' in os.environ:
   token = os.environ['TOKEN']
   if token:
   	c.NotebookApp.token = token

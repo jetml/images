@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+span#login_widget{
+    display: none;
+}
+#tabs .clusters_tab_link{
+    display: none;
+}
+
+a {
+    color: #404040
+}
+
+a:hover {
+    color: #000000
+}
+
+.list_header {
+    background-color: #dedede;
+}
+
+.list_container > div {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.running_notebook_icon:before {
+    color: #2EC521;
+}
+
+.item_buttons .running-indicator {
+    color: #2EC521;
+}
+
+.btn-warning:hover {
+    background-color: #e7a816;
+    border-color: #e7a816;
+}
+
+.btn-warning {
+    background-color: #FCBD2E;
+    border-color: #FCBD2E;
+}
+
+.item_buttons .kernel-name {
+    color: #026ecc;
+}
+
+.btn-danger:hover {
+    background-color: #bb4013;
+    border-color: #bb4013;
+}
+
+.btn-danger {
+    background-color: #F65A22;
+    border-color: #F65A22;
+}
+
+#header, #tab_content {
+    font-family: 'Open Sans';
+}
+
+.btn {
+    font-family: 'Montserrat';
+}
+
+.navbar-default {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+.notebook_app {
+    background-color: #ffffff;
+}
+
+.terminal-app {
+    background: #ffffff;
+}
