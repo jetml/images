@@ -15,6 +15,8 @@
 # ==============================================================================
 
 (pip --no-cache-dir install -r /notebooks/requirements.txt; /bin/bash /notebooks/start.sh) &
+(pip --no-cache-dir install -r /start/workspace-requirements-file.txt; pip --no-cache-dir install -r /start/instance-requirements-file.txt) &
+(/bin/bash /start/workspace-start-file.sh; /bin/bash /start/instance-start-file.sh) &
 
 #jupyter notebook "$@"
 jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
