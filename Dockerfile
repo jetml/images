@@ -23,6 +23,7 @@ RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/st
 RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/base/js/namespace.js
 RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/static/notebook/js/menubar.js
 RUN sed -i 's/_blank/_self/g' /usr/local/lib/python3.6/dist-packages/notebook/templates/notebook.html
+RUN sed -i 's/w.close/\/\/w.close/g' /usr/local/lib/python3.6/dist-packages/notebook/static/tree/js/main.min.js
 RUN sed -i 's/w.close/\/\/w.close/g' /usr/local/lib/python3.6/dist-packages/notebook/static/tree/js/newnotebook.js
 RUN sed -i 's/w.close/\/\/w.close/g' /usr/local/lib/python3.6/dist-packages/notebook/static/tree/js/notebooklist.js
 
