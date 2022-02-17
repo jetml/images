@@ -19,12 +19,16 @@
 (/bin/bash /start/workspace-start-file.sh; /bin/bash /start/instance-start-file.sh) &
    
 
+
 if [ -z "$run_notebook_path" ]
 then
       echo "\$run_notebook_path is empty"
 else
       echo "\$run_notebook_path is NOT empty"
-      (mkdir -p /notebooks/workflow-runs/notebooks && jupyter nbconvert --to html --execute $run_notebook_path --allow-errors --output /notebooks/workflow-runs$run_notebook_path.html) &
+      dest_folder="/notebooks/workflow-runs"
+      current_timestamp=$(date +%s)
+      output_path="${dest_folder}$run_notebook_path.${current_timestamp}.html" 
+      (mkdir -p /notebooks/workflow-runs/notebooks && jupyter nbconvert --to html --execute $run_notebook_path --allow-errors --output ${output_path}) &
 fi
 
 #jupyter notebook "$@"
