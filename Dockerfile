@@ -5,6 +5,10 @@ RUN apt-get update && apt-get install -y \
     keychain \
     nano
 
+RUN /usr/bin/python3 -m pip install --upgrade pip
+
+RUN pip install opencv-python pandas plotly scikit-learn scipy seaborn torch torchvision torchaudio
+
 # Set up our notebook config.
 
 RUN mkdir /root/.jupyter/custom
@@ -37,4 +41,4 @@ RUN chmod +x /run_jupyter.sh
 
 RUN dos2unix /run_jupyter.sh
 
-CMD ["/run_jupyter.sh", "--allow-root"]
+CMD ["/run_jupyter.sh"]
