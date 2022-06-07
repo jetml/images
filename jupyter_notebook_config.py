@@ -13,18 +13,18 @@
 # limitations under the License.
 # ==============================================================================
 import os
-from IPython.lib import passwd
 
 c = c  # pylint:disable=undefined-variable
 c.NotebookApp.ip = '*'
 c.NotebookApp.port = int(os.getenv('PORT', 8888))
-c.NotebookApp.open_browser = False
+#c.NotebookApp.open_browser = False
 c.NotebookApp.notebook_dir = '/notebooks'
 c.NotebookApp.quit_button = False
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.tornado_settings = {'headers': {'X-Frame-Options': 'ALLOW-FROM http://localhost:8080','Content-Security-Policy': "frame-ancestors 'self' *"}}
 c.NotebookApp.webbrowser_open_new = 0
 c.NotebookApp.terminado_settings = { 'shell_command': ['/bin/bash'] }
+
 #c.MappingKernelManager.cull_idle_timeout = 60
 #c.NotebookApp.shutdown_no_activity_timeout = 70
 
@@ -32,5 +32,7 @@ c.NotebookApp.terminado_settings = { 'shell_command': ['/bin/bash'] }
 if 'TOKEN' in os.environ:
   token = os.environ['TOKEN']
   if token:
-  	c.NotebookApp.token = token
+    c.NotebookApp.token = token
   del os.environ['TOKEN']
+
+
