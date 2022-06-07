@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.9.1-jupyter
+FROM tensorflow/tensorflow:2.9.1-gpu-jupyter
 
 RUN apt-get update && apt-get install -y \
     dos2unix \
