@@ -24,6 +24,7 @@ c.NotebookApp.allow_origin = '*'
 c.NotebookApp.tornado_settings = {'headers': {'X-Frame-Options': 'ALLOW-FROM http://localhost:8080','Content-Security-Policy': "frame-ancestors 'self' *"}}
 c.NotebookApp.webbrowser_open_new = 0
 c.NotebookApp.terminado_settings = { 'shell_command': ['/bin/bash'] }
+c.FileContentsManager.delete_to_trash = False
 
 #c.MappingKernelManager.cull_idle_timeout = 60
 #c.NotebookApp.shutdown_no_activity_timeout = 70
