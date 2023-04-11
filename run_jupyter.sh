@@ -3,8 +3,19 @@
 # turn on bash's job control
 set -m
 
-# Start the primary process and put it in the background
-jupyter notebook --ip 0.0.0.0 --no-browser --allow-root &
+
+if [ -z "$headless_jupyter" ]
+then
+      #install jetmlgpt
+      pip install jetmlgpt
+      jupyter serverextension enable --py jetmlgpt
+      echo "\$headless_jupyter is empty"
+      # Start the primary process and put it in the background
+      jupyter notebook --ip 0.0.0.0 --no-browser --allow-root &
+else
+      echo "\$headless_jupyter is NOT empty"
+
+fi
 
 /usr/bin/python3 -m pip install --upgrade pip
 
