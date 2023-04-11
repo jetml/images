@@ -75,3 +75,11 @@ a:hover {
 .terminal-app {
     background: #ffffff;
 }
+
+#newsId {
+    display: none !important;
+}
+
+#shutdown{
+    display: none !important;
+}
