@@ -6,6 +6,9 @@ set -m
 
 if [ -z "$headless_jupyter" ]
 then
+      #install jetmlgpt
+      pip install jetmlgpt
+      jupyter serverextension enable --py jetmlgpt
       echo "\$headless_jupyter is empty"
       # Start the primary process and put it in the background
       jupyter notebook --ip 0.0.0.0 --no-browser --allow-root &
