@@ -4,7 +4,7 @@
 set -m
 
 
-if [ -z "$headless_jupyter" ]
+if [ -z "$headless_jupyter" ] || [ "$headless_jupyter" = "false" ]
 then
       #install jetmlgpt
       pip install jetmlgpt
