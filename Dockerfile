@@ -3,14 +3,22 @@ FROM tensorflow/tensorflow:2.12.0-jupyter
 RUN apt-get update && apt-get install -y \
     dos2unix \
     keychain \
-    nano
+    nano \
+    r-base \
+    r-base-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev
 
 RUN /usr/bin/python3 -m pip install --upgrade pip
 
 RUN pip install opencv-python pandas plotly scikit-learn scipy seaborn torch torchvision torchaudio
 
-# Set up our notebook config.
+# Install R packages and IRkernel
+RUN R -e "install.packages(c('devtools', 'IRkernel'), repos = 'https://cloud.r-project.org/')"
+RUN R -e "IRkernel::installspec(user = FALSE)"
 
+# Set up our notebook config.
 RUN mkdir /root/.jupyter/custom
 
 COPY jupyter_notebook_config.py /root/.jupyter/
